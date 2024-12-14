@@ -2,7 +2,7 @@ module.exports.config = {
   name: "playstore",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "Clarence DK",
+  credits: "nazrul",
   description: "",
   commandCategory: "User",
   usages: "",

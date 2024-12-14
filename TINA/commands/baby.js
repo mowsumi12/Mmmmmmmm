@@ -28,7 +28,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
       const messages = ["Bolo baby", "hum", "type help baby", "type !baby hi"];
       const msg = {
         body: `✨ ${name} ✨\n\n${greetings}, Hello ${name}!\n\n${randMessage}\n`,
-      } ];
+      };
       return api.sendMessage(r, event.threadID, event.messageID);
     }
 

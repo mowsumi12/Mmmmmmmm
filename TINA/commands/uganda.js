@@ -2,7 +2,7 @@ module.exports.config = {
   name: "uganda",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "Alvi",
+  credits: "Nazrul",
   description: "White brother :v",
   commandCategory: "text-image",
   usages: "[text 1] | [text 2]",

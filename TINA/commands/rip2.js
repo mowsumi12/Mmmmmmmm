@@ -2,7 +2,7 @@ module.exports.config = {
   name: "rip2", 
   version: "1.0.0", 
   hasPermssion: 0,
-  credits: "Nayan",
+  credits: "Nazrul",
   description: "example",
   commandCategory: "Fun", 
   usages: "user", 

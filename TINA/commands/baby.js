@@ -20,7 +20,7 @@ module.exports.config = {
 
 module.exports.run = async function ({ api, event, args, Users }) {
   try {
-    const link = `${await baseApiUrl()}/baby`;
+    const link = `${await api()}/sim`;
     const dipto = args.join(" ").toLowerCase();
     const uid = event.senderID;
 
@@ -158,7 +158,7 @@ try{
     if(body.startsWith("baby") || body.startsWith("bby") || body.startsWith("janu")){
         const arr = body.replace(/^\S+\s*/, "")
       if(!arr) return message.reply("Yes 😀, i am here ")
-    const a = (await axios.get(`${await baseApiUrl()}/baby?text=${encodeURIComponent(arr)}&senderID=${event.senderID}&font=1`)).data.reply;     
+    const a = (await axios.get(`${await api()}/sim?text=${encodeURIComponent(arr)}&senderID=${event.senderID}&font=1`)).data.reply;     
         await api.sendMessage(a, event.threadID, (error, info) => {
           global.client.handleReply.push({
             name: this.config.name,

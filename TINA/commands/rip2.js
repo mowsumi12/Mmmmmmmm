@@ -1,12 +1,15 @@
 module.exports.config = {
-  name: "rip2",
-  version: "1.0.",
+  name: "rip2", 
+  version: "1.0.0", 
   hasPermssion: 0,
-  credits: "NAZRUL",//dont change credit😠
-  description: "experts",
-  commandCategory: "fb I'd hacking",
-  usages: "fake hake",
-  cooldowns: 0
+  credits: "Nayan",
+  description: "example",
+  commandCategory: "Fun", 
+  usages: "user", 
+  cooldowns: 5,
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
   },
   cooldowns: 0
 };

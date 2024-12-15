@@ -1,8 +1,8 @@
 module.exports.config = {
-	name: "trans",
+	name: "en",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "ALVI CHOWDHURY",
+	credits: "nazrul",
 	description: "Text translation",
 	commandCategory: "media",
 	usages: "[en/ko/ja/vi] [Text]",
@@ -33,6 +33,6 @@ module.exports.run = async ({ api, event, args }) => {
 		var text = '';
 		retrieve[0].forEach(item => (item[0]) ? text += item[0] : '');
 		var fromLang = (retrieve[2] === retrieve[8][0][0]) ? retrieve[2] : retrieve[8][0][0]
-		api.sendMessage(` ${text}\n -  🍂${fromLang} to ${lang}🍂`, event.threadID, event.messageID);
+		api.sendMessage(` ${text}`, event.threadID, event.messageID);
 	});
 }

@@ -2,7 +2,7 @@
 
 module.exports.config = {
 
-name: `/`,
+name: `\n`,
 
 version: "1.0.0", 
 

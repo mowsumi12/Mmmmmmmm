@@ -1,11 +1,10 @@
 module.exports.config = {
   name: "dpname1",
   version: "1.0.0",
-  permission: 0,
+  hasPermssion: 0,
   credits: "nazrul",
-  prefix: true, 
   description: "name maker",
-  category: "dp23 dpname",
+  commandCategory: "dp23 dpname",
   usages: "text 1 + text 2",
   cooldowns: 1
 };

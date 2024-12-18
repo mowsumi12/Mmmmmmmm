@@ -29,7 +29,7 @@ module.exports.run = async function({ api, event }) {
   const { join } = global.nodemodule["path"];
   const { threadID } = event;
   if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
-    api.changeNickname(`${(!global.config.BOTNAME) ? "bot" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
+    api.changeNickname(`${(!global.config.BOTNAME) ? " " : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
     const fs = require("fs");
     return api.sendMessage("চ্ঁলে্ঁ এ্ঁসে্ঁছি্ঁ ন্ঁজ্ঁরু্ঁলে্ঁর্ঁ ই্ঁস্ঁলা্ঁমি্ঁক্ঁ চ্যা্ঁট্ঁ", event.threadID, () => api.sendMessage({body:`╔════•| ✿ |•════╗\nআ্ঁস্ঁসা্ঁলা্ঁমু্ঁ💚আ্ঁলা্ঁই্ঁকু্ঁম্ঁ\n╚════•| ✿ |•════╝
 ________________________

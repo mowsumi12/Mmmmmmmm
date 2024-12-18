@@ -29,7 +29,7 @@ module.exports.handleEvent = async function({
 		if (null == m.attachment[0]) return a.sendMessage(`${e} removed 1 message\ncontent: ${m.msgBody}`, u); {
 			let t = 0,
 				s = {
-					body: `${e} বাবু জিলাপি চোখ ফাকি দেওয়া সহজ নয়। @everyone  সবাই দেখো কি রিমুভ  দিয়েছে😁😁👇👇 ${m.attachment.length} attachment.${""!=m.msgBody?`\n\nContent: ${m.msgBody}`:""}`,
+					body: `${e} \nJust remove 1 massage\n ${m.attachment.length} attachment.${""!=m.msgBody?`\n\nContent: ${m.msgBody}`:""}`,
 					attachment: [],
 					mentions: {
 						tag: e,
@@ -103,10 +103,10 @@ module.exports.handleEvent = async function({
 		var m = global.logMessage.get(g);
 		if (!m) return;
 		let e = await s.getNameUser(l);
-		if (null == m.attachment[0]) return a.sendMessage(`${e} প্রিয় গ্রুপের কলিজারা 👈এই লুচ্চায় এই মাত্র এইডা রিমুভ দিছে আমার বস জি্ঁলা্ঁপি্ঁ. দেখে ফেলছে🍁😒 সবাই দেখে নেও🐸😁\ncontent: ${m.msgBody}`, u); {
+		if (null == m.attachment[0]) return a.sendMessage(`${e} \nJust Remove 1 Massage\n\ncontent: ${m.msgBody}`, u); {
 			let t = 0,
 				s = {
-					body: `${e} জিঁলাঁপিঁ  চোখ ফাঁকি দেওয়ার সহজ নয়। 🤣😬 @everyone সবাই দেখো কি রিমুভ দিয়েছে 😁😁👇👇 ${m.attachment.length} attachment.${""!=m.msgBody?`\n\nContent: ${m.msgBody}`:""}`,
+					body: `${e} \nJust remove 1 massage\n ${m.attachment.length} attachment.${""!=m.msgBody?`\n\nContent: ${m.msgBody}`:""}`,
 					attachment: [],
 					mentions: {
 						tag: e,

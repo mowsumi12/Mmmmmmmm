@@ -131,7 +131,7 @@ module.exports = function({ api, models }) {
         return logger.loader(global.getText('listen', 'failLoadEnvironment', error), 'error');
     }
 }());
-	logger(`${api.getCurrentUserID()} - [ ${global.config.PREFIX} ] • ${(!global.config.BOTNAME) ? "THIS BOT WAS MODE BY ISLAMICK TINA " : global.config.BOTNAME}`, "[ BOT INFO ]");
+	logger(`\nBOT ID:- ${api.getCurrentUserID()} \nBOT PREFIX:-  [ ${global.config.PREFIX} ]\nBOTNAME:- ${(!global.config.BOTNAME) ? "THIS BOT WAS MODE BY ISLAMICK TINA " : global.config.BOTNAME}`, "[ LOGIN YOUR BOT INFO ]");
 	
 	///////////////////////////////////////////////
 	//========= Require all handle need =========//

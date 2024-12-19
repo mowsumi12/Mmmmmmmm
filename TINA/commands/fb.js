@@ -2,7 +2,7 @@ module.exports.config = {
   name: "fb",
   version: "1.0.",
   hasPermssion: 0,
-  credits: "Islamick Chat",
+  credits: "nazrul",
   description: "Fb Vid Downloader",
   commandCategory: "other",
   usages: "fb video link",

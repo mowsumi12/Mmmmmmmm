@@ -341,7 +341,7 @@ loginApiData.setOptions(global.config.FCAOption)
         global.client.api = loginApiData
         logger(`NAZRUL`, '[ ISLAMICK TINA ]');
         logger('THANK YOU FOR USING ISLAMICK TINA', 'NAZRUL');
-        logger("FIXED BY NAZRUL '[ ISLAMICK CHAT ]'");
+        logger("FIXED BY NAZRUL [ ISLAMICK CHAT ]\n███╗░░██╗  ░█████╗░  ███████╗  ██████╗░  ██╗░░░██╗  ██╗░░░░░\n████╗░██║  ██╔══██╗  ╚════██║  ██╔══██╗  ██║░░░██║  ██║░░░░░\n██╔██╗██║  ███████║  ░░███╔═╝  ██████╔╝  ██║░░░██║  ██║░░░░░\n██║╚████║  ██╔══██║  ██╔══╝░░  ██╔══██╗  ██║░░░██║  ██║░░░░░\n██║░╚███║  ██║░░██║  ███████╗  ██║░░██║  ╚██████╔╝  ███████╗\n╚═╝░░╚══╝  ╚═╝░░╚═╝  ╚══════╝  ╚═╝░░╚═╝  ░╚═════╝░  ╚══════╝");
       //notif if bot is kaka on palang
 const momentt = require("moment-timezone").tz("Asia/Dhaka");
     const day = momentt.day();

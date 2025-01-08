@@ -1,92 +1,87 @@
 module.exports.config = {
-        name: "بنك",
+        name: "bank",
         version: "0.0.1",
         hasPermssion: 0,
-        credits: "عمر",
+        credits: "D-Jukie-keychinhle",
         description: "",
-        commandCategory: "الاموال",
-        usages: "سحب/ايداع/عرض/تسجيل",
+        commandCategory: "tiện ích",
+        usages: "",
         cooldowns: 0,
 dependencies: {
          "fs-extra": "",
       "request": "",
       "axios": ""
-  }, 
-envConfig: {
-      APIKEY: "chinhdz"
 }  
 };
 module.exports.onLoad = async () => {
 	const { existsSync, writeFileSync, mkdirSync } = require("fs-extra")
 	const { join } = require("path")
 	const axios = require("axios");
-	const dir = __dirname + `/banking`;
+	const dir = __dirname + `/bot`;
 	if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
-    const pathData = join(__dirname + '/banking/banking.json');
+    const pathData = join(__dirname + '/bot/banking.json');
     if (!existsSync(pathData)) return writeFileSync(pathData, "[]", "utf-8"); 
 	return;
 }
 module.exports.run = async function({ api, event, args, models, Users, Threads, Currencies, permssion }) {
   const { threadID, messageID, senderID } = event;
   const axios = require("axios")
-    /*var APIKEY = global.configModule[this.config.name].APIKEY
-    const checkKey = (await axios.get(`https://myhurts.net/adminkeys?key=chinhdz`)).data
-    if(checkKey.status !== true) return api.sendMessage('⚠APIKEY CỦA BẠN ĐÃ HẾT HẠN, VUI LÒNG LIÊN HỆ chinhle ĐỂ MUA KEY\n⚡️FB: https://www.facebook.com/chinhle3601/', threadID, messageID);*/
+   
   const { readFileSync, writeFileSync } = require("fs-extra")
   const { join } = require("path")
-  const pathData = join(__dirname + '/banking/banking.json');
-  const user = require('./banking/banking.json');
+  const pathData = join(__dirname + '/bot/banking.json');
+  const user = require('./bot/banking.json');
   const timeIM = 60*60
-  const laisuat = 0.05
+  const laisuat = 2
   const moneyInput = parseInt(args[1])
-  if(args[0] == 'تسجيل' || args[0] == 'register') {
+  if(args[0] == '-r' || args[0] == 'register') {
     if (!user.find(i => i.senderID == senderID)) {
       var add = { senderID: senderID,  money: 0 }
       user.push(add);
       writeFileSync(pathData, JSON.stringify(user, null, 2));
-      return api.sendMessage(`[ بنك سيستا ] » لقد قمت بالتسجيل بنجاح \n قم بإيداع 200 دولار على الأقل لجني الأرباح💰`, threadID, messageID)
+      return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗕𝗮̣𝗻 𝘃𝘂̛̀𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘁𝗵𝗮̀𝗻𝗵 𝗰𝗼̂𝗻𝗴, 𝗴𝘂̛̉𝗶 𝗶́𝘁 𝗻𝗵𝗮̂́𝘁 𝟮𝟬𝟬 𝗩𝗡𝗗 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝗰𝗼́ 𝗹𝗮̃𝗶 💰`, threadID, messageID)
     }
-  else return api.sendMessage(`[ بنك سيستا ] » لديك بالفعل حساب على نظام البنك 🏦`, threadID, messageID)
+  else return api.sendMessage(`[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗕𝗮̣𝗻 𝗵𝗶𝗲̣̂𝗻 𝗰𝗼́ 𝘁𝗮̀𝗶 𝗸𝗵𝗼𝗮̉𝗻 𝘁𝗿𝗲̂𝗻 𝗵𝗲̣̂ 𝘁𝗵𝗼̂́𝗻𝗴 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 𝗿𝗼̂̀𝗶 🏦`, threadID, messageID)
   }
-  if(args[0] == 'check' || args[0] == 'عرض') {
-  if (!user.find(i => i.senderID == senderID)) return api.sendMessage('[ بنك سيستا ] » انت مل مسجل بالبنك سجل وتعال 🏦', threadID, messageID)
+  if(args[0] == 'check' || args[0] == 'coins') {
+  if (!user.find(i => i.senderID == senderID)) return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗰𝗵𝘂̛𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗻𝗴𝗮̂𝗻, /𝗯𝗮𝗻𝗸 -𝗿 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝘁𝗮̣𝗼 😽', threadID, messageID)
     else { 
       var userData = user.find(i => i.senderID == senderID);
-      return api.sendMessage(`[ بنك سيستا ] » المبلغ الذي تودع به بنك سيستا هو: ${userData.money}$\n\n💷 الفائده: +${laisuat}% كل ${timeIM/60} دقيقة`, threadID, messageID)
+      return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗦𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗵𝗶𝗲̣̂𝗻 𝘁𝗮̣𝗶 𝗯𝗮̣𝗻 𝗴𝘂̛̉𝗶 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 𝗹𝗮̀: ${userData.money}$\n💷 𝗟𝗮̃𝗶: +${laisuat}% 𝘁𝗿𝗼𝗻𝗴 ${timeIM/60} 𝗽𝗵𝘂́𝘁`, threadID, messageID)
     }
   } 
-  if(args[0] == 'ايداع' || args[0] == 'send') {
-  if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("[ بنك سيستا ] »يجب أن يكون مبلغ الإيداع رقمًا واحدًا وأكبر من 50 دولارًا 💰", threadID, messageID);
+  if(args[0] == 'gửi' || args[0] == 'send') {
+  if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗦𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗰𝗮̂̀𝗻 𝗴𝘂̛̉𝗶 𝗽𝗵𝗮̉𝗶 𝗹𝗮̀ 𝟭 𝗰𝗼𝗻 𝘀𝗼̂́ 𝘃𝗮̀ 𝗹𝗼̛́𝗻 𝗵𝗼̛𝗻 𝟱𝟬 𝗩𝗡𝗗 💰", threadID, messageID);
   if (!user.find(i => i.senderID == senderID)) {
-    return api.sendMessage('[ بنك سيستا ] »  اكتب (بنك تسجيل) حتى تسجل بالبنك وتعرض فلوسك + نسبة الفئدة 💰', threadID, messageID)
+    return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗰𝗵𝘂̛𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗻𝗴𝗮̂𝗻, /𝗯𝗮𝗻𝗸 -𝗿 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝘁𝗮̣𝗼 😽', threadID, messageID)
   }
   else { 
       let balance = (await Currencies.getData(senderID)).money;
-      if(balance < moneyInput) return api.sendMessage(`[ بنك سيستا ] » رصيدك غير كاف ${moneyInput} للإيداع في بنك سيستا 💰 `, threadID, messageID)
+      if(balance < moneyInput) return api.sendMessage(`[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » Số dư không đủ ${moneyInput} để gửi vào Mirai Bank💰 `, threadID, messageID)
       var userData = user.find(i => i.senderID == senderID);
       var money = userData.money;
       userData.money = parseInt(money) + parseInt(moneyInput)
       writeFileSync(pathData, JSON.stringify(user, null, 2));
       await Currencies.decreaseMoney(senderID, parseInt(moneyInput));
-      return api.sendMessage(`[ بنك سيستا ] » لقد قمت بأيداع  ${moneyInput}$ في بنك سيستا\n\n💷 الفائده: +${laisuat}% في ${timeIM/60} دقيقة`, threadID, messageID)
+      return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗕𝗮̣𝗻 𝘃𝘂̛̀𝗮 𝗴𝘂̛̉𝗶 ${moneyInput}$ 𝘃𝗮̀𝗼 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸\n💷 𝗟𝗮̃𝗶: +${laisuat}% 𝘁𝗿𝗼𝗻𝗴 ${timeIM/60} 𝗽𝗵𝘂́𝘁`, threadID, messageID)
     }
   }
-  if(args[0] == 'rút' || args[0] == 'سحب') { 
-    if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("[ بنك سيستا ] » لازم تكتب رقم واكثر من 50 دولار . ", threadID, messageID);
+  if(args[0] == 'rút' || args[0] == 'lấy') { 
+    if (!args[1] || isNaN(args[1]) || parseInt(args[1]) < 50) return api.sendMessage("[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗦𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗰𝗮̂̀𝗻 𝗴𝘂̛̉𝗶 𝗽𝗵𝗮̉𝗶 𝗹𝗮̀ 𝟭 𝗰𝗼𝗻 𝘀𝗼̂́ 𝘃𝗮̀ 𝗹𝗼̛́𝗻 𝗵𝗼̛𝗻 𝟱𝟬 𝗩𝗡𝗗 💰", threadID, messageID);
     if (!user.find(i => i.senderID == senderID)) {
-      return api.sendMessage('[ بنك سيستا ] »  اكتب (بنك تسجيل) حتى تسجل بالبنك وتعرض فلوسك + نسبة الفئدة 💰', threadID, messageID)
+      return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » 𝗡𝗴𝘂̛𝗼̛̀𝗶 𝗱𝘂̀𝗻𝗴 𝗰𝗵𝘂̛𝗮 𝘁𝗮̣𝗼 𝘁𝗵𝗲̉ 𝘀𝘂̛̉ 𝗱𝘂̣𝗻𝗴 𝗻𝗴𝗮̂𝗻, /𝗯𝗮𝗻𝗸 -𝗿 𝗻𝗲̂́𝘂 𝗺𝘂𝗼̂́𝗻 𝘁𝗮̣𝗼 😽', threadID, messageID)
     }
   else {  
     var userData = user.find(i => i.senderID == senderID); 
     var money = userData.money;
-    if(parseInt(money) < parseInt(moneyInput)) return api.sendMessage('[ بنك سيستا ] » رصيدك لا يكفي لإجراء هذه الصفقة!', threadID, messageID)
+    if(parseInt(money) < parseInt(moneyInput)) return api.sendMessage('[ 𝐂𝐀̉𝐍𝐇 𝐁𝐀́𝐎 ] » Số dư của bạn không đủ để thực hiện giao dịch này!', threadID, messageID)
       else {
         await await Currencies.increaseMoney(senderID, parseInt(moneyInput));
         userData.money = parseInt(money) - parseInt(moneyInput)
         writeFileSync(pathData, JSON.stringify(user, null, 2));
-        return api.sendMessage(`[ بنك سيستا ] »تم سحب  ${parseInt(moneyInput)}$ بنجاح \n الرصيد المتبقي هو ${userData.money}$`, threadID, messageID)
+        return api.sendMessage(`[ 𝐍𝐆𝐀̂𝐍 𝐇𝐀̀𝐍𝐆 ] » 𝗥𝘂́𝘁 𝘁𝗵𝗮̀𝗻𝗵 𝗰𝗼̂𝗻𝗴 ${parseInt(moneyInput)}$, 𝘀𝗼̂́ 𝗱𝘂̛ 𝗰𝗼̀𝗻 𝗹𝗮̣𝗶 𝗹𝗮̀ ${userData.money}$`, threadID, messageID)
       }
     }
   }
-  else return api.sendMessage(`=====🏦 بنك سيستا 🏦=====\n\n[بنك تسجيل] - سجل لإيداع الأموال في بنك سيستا💹\n[بنك عرض] - عرض المبلغ في بنك سيستا💳\n[بنك ايداع] - الإيداع في بنك سيستا💷\n[بنك سحب] - سحب الأموال من بنك سيستا\n\n💲 معدل الفائدة الحالي: +${laisuat}% في ${timeIM/60} هذه اللحظه`, threadID, messageID)
-      }
+  else return api.sendMessage(`======🏦 𝐌𝐢𝐫𝐚𝐢 𝐁𝐚𝐧𝐤 🏦======\n\n[-𝐫/𝐫𝐞𝐠𝐢𝐬𝐭𝐞𝐫] - 𝗧𝗮̣𝗼 𝘁𝗵𝗲̉ 𝗴𝘂̛̉𝗶 𝘁𝗶𝗲̂̀𝗻 𝘁𝗮̣𝗶 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 💹\n[𝐜𝐡𝐞𝐜𝐤/𝐜𝐨𝐢𝐧𝐬] - 𝗫𝗲𝗺 𝘀𝗼̂́ 𝘁𝗶𝗲̂̀𝗻 𝗵𝗶𝗲̣̂𝗻 𝘁𝗿𝗼𝗻𝗴 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 💳\n[𝐠𝐮̛̉𝐢/𝐬𝐞𝐧𝐝] - 𝗚𝘂̛̉𝗶 𝘁𝗶𝗲̂̀𝗻 𝘃𝗮̀𝗼 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸 💷\n[𝐫𝐮́𝐭] - 𝗥𝘂́𝘁 𝘁𝗶𝗲̂̀𝗻 𝘁𝘂̛̀ 𝗠𝗶𝗿𝗮𝗶 𝗕𝗮𝗻𝗸💰\n\n💲 𝗟𝗮̃𝗶 𝘀𝘂𝗮̂́𝘁 𝗵𝗶𝗲̣̂𝗻 𝘁𝗮̣𝗶: +${laisuat}% 𝘁𝗿𝗼𝗻𝗴 ${timeIM/60} 𝗽𝗵𝘂́𝘁`, threadID, messageID)
+}

@@ -3,11 +3,10 @@ const axios = require('axios');
 module.exports.config = {
   name: 'imgtext',
   version: '1.0.1',
-  permssion: 0,
+  hasPermssion: 0,
   credits: 'RAHAT',
-  prefix: 'awto',
   description: 'An Image to Text Converter',
-  category: 'entertainment',
+  commandCategory: 'entertainment',
   usages: 'img2text [reply to an image]',
   cooldowns: 0,
 };

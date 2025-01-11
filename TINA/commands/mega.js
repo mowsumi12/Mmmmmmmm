@@ -40,7 +40,7 @@ return api.sendMessage(`${name},\n\n${rand}\n\n`, event.threadID, event.messageI
 
 const encodedQuery = encodeURIComponent(query);
 
-const apiUrl = `https://personal-ai-phi.vercel.app/kshitiz?q=${encodeURIComponent(query)}`;
+const apiUrl = `https://personal-ai-phi.vercel.app/kshitiz?q=${encodedQuery}`;
 
 const res = await axios.get(apiUrl);
 

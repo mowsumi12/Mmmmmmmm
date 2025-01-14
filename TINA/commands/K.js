@@ -92,13 +92,13 @@ const { correctAnswer, nameUser, author } = handleReply;
           .catch(console.error);
           let rewardCoins = 300;
           let rewardExp = 100;
-          let usersData = await usersData.get(author);
-          await usersData.set(author, {
-          money: usersData.money + rewardCoins,
-            exp: usersData.exp + rewardExp,
-            data: usersData.data,
+          let usersData = await userData.get(author);
+          await userData.set(author, {
+          money: userData.money + rewardCoins,
+            exp: userData.exp + rewardExp,
+            data: userData.data,
           });
-          const correctMsg = `Congratulations, 🌟🎉\n\nYou're a Quiz Champion! 🏆\n\nYou've earned ${rewardCoins} Coins 💰 and ${rewardExp} EXP 🌟\n\nKeep up the great work! 🚀`;
+          let correctMsg = `Congratulations, 🌟🎉\n\nYou're a Quiz Champion! 🏆\n\nYou've earned ${rewardCoins} Coins 💰 and ${rewardExp} EXP 🌟\n\nKeep up the great work! 🚀`;
           api.sendMessage(correctMsg, event.threadID, event.messageID);
         } else {
           handleReply.attempts += 1;

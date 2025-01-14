@@ -98,7 +98,7 @@ const { correctAnswer, nameUser, author } = handleReply;
             exp: users.exp + rewardExp,
             data: users.data,
           });
-          const correctMsg = `Congratulations, 🌟🎉\n\nYou're a Quiz Champion! 🏆\n\nYou've earned ${rewardCoins} Coins 💰 and ${rewardExp} EXP 🌟\n\nKeep up the great work! 🚀`;
+          let correctMsg = `Congratulations, 🌟🎉\n\nYou're a Quiz Champion! 🏆\n\nYou've earned ${rewardCoins} Coins 💰 and ${rewardExp} EXP 🌟\n\nKeep up the great work! 🚀`;
           api.sendMessage(correctMsg, event.threadID, event.messageID);
         } else {
           handleReply.attempts += 1;
